@@ -2,8 +2,9 @@
 
 ## Demo
 #### Full Screen
-
+![Dome](https://raw.githubusercontent.com/y-hryk/StretchHeader/master/sample_01.gif)
 #### NavigationBar
+![Dome](https://raw.githubusercontent.com/y-hryk/StretchHeader/master/sample_02.gif)
 
 ## Requirement
 iOS 7.0 or later
