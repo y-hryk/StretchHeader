@@ -13,7 +13,7 @@ iOS 7.0 or later
 #### CocoaPods
  not support
  
- ## Usage
+## Usage
  ```swift
  
   var header : StretchHeader!
@@ -49,7 +49,7 @@ iOS 7.0 or later
         tableView.tableHeaderView = header
     }
     
-     // MAEK: - ScrollView Delegate
+    // MAEK: - ScrollView Delegate
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         header.updateScrollViewOffset(scrollView)
     }
