@@ -46,11 +46,11 @@ public class StretchHeader: UIView {
         
         self.options = options
         
-        if options.position == StretchHeaderOptions.HeaderPosition.FullScreenTop {
+        if options.position == HeaderPosition.FullScreenTop {
             controller.automaticallyAdjustsScrollViewInsets = false
         }
         
-        if options.position == StretchHeaderOptions.HeaderPosition.UnderNavigationBar {
+        if options.position == HeaderPosition.UnderNavigationBar {
             if let translucent = controller.navigationController?.navigationBar.translucent {
                 if translucent {
                     topInset += status_height + navi_height
