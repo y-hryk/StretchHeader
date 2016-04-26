@@ -1,4 +1,4 @@
-@version = "1.0.2"
+@version = "1.0.3"
 Pod::Spec.new do |s|
   s.name         = "StretchHeader"
   s.version      = @version
