@@ -12,7 +12,7 @@ iOS 7.0 or later
 #### CocoaPods
  Add pod 'StretchHeader' to your Podfile.
  ```
- pod 'StretchHeader', '1.0.0'
+ pod 'StretchHeader'
  ```
  
 ## Usage
