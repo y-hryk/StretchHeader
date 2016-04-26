@@ -10,7 +10,10 @@ iOS 7.0 or later
 #### Manually
  Copy StretchHeader directory to your project.
 #### CocoaPods
- not support
+ Add pod 'StretchHeader' to your Podfile.
+ ```
+ pod 'StretchHeader', '1.0.0'
+ ```
  
 ## Usage
  ```swift
