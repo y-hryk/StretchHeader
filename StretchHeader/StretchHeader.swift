@@ -39,7 +39,7 @@ public class StretchHeader: UIView {
     }
     
     // MARK: Public
-    func stretchHeaderSize(headerSize headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions) {
+    public func stretchHeaderSize(headerSize headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions) {
         
         let status_height = UIApplication.sharedApplication().statusBarFrame.height
         let navi_height = controller.navigationController?.navigationBar.frame.size.height ?? 44
@@ -63,7 +63,7 @@ public class StretchHeader: UIView {
         self.frame = CGRectMake(0, 0, headerSize.width, headerSize.height)
     }
     
-    func updateScrollViewOffset(scrollView: UIScrollView) {
+    public func updateScrollViewOffset(scrollView: UIScrollView) {
         
         if imageView == nil { return }
         var scrollOffset : CGFloat = scrollView.contentOffset.y

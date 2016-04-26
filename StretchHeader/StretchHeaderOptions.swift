@@ -16,4 +16,6 @@ public class StretchHeaderOptions {
         case FullScreenTop
         case UnderNavigationBar
     }
+    
+    public init() {}
 }
