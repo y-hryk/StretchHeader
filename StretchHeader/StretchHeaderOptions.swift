@@ -8,12 +8,12 @@
 
 import UIKit
 
-public enum HeaderPosition {
-    case FullScreenTop
-    case UnderNavigationBar
-}
-
 public class StretchHeaderOptions {
     
     public var position : HeaderPosition = .FullScreenTop
+    
+    public enum HeaderPosition {
+        case FullScreenTop
+        case UnderNavigationBar
+    }
 }
