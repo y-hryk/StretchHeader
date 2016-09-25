@@ -51,7 +51,7 @@ class Demo2Controller: UITableViewController {
         tableView.tableHeaderView = header
     }
     
-    // MAEK: - ScrollView Delegate
+    // MARK: - ScrollView Delegate
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         header.updateScrollViewOffset(scrollView)
     }
