@@ -18,7 +18,7 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         super.didReceiveMemoryWarning()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil;
@@ -27,61 +27,61 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView = UITableView(frame: view.bounds, style: .Plain)
+        tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         setupHeaderView()
         
         // NavigationHeader
-        let navibarHeight : CGFloat = CGRectGetHeight(navigationController!.navigationBar.bounds)
-        let statusbarHeight : CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
+        let navibarHeight : CGFloat = navigationController!.navigationBar.bounds.height
+        let statusbarHeight : CGFloat = UIApplication.shared.statusBarFrame.size.height
         navigationView = UIView()
-        navigationView.frame = CGRectMake(0, 0, view.frame.size.width, navibarHeight + statusbarHeight)
+        navigationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: navibarHeight + statusbarHeight)
         navigationView.backgroundColor = UIColor(red: 121/255.0, green: 193/255.0, blue: 203/255.0, alpha: 1.0)
         navigationView.alpha = 0.0
         view.addSubview(navigationView)
         
         // back button
-        let button = UIButton(type: .Custom)
-        button.frame = CGRectMake(10, 20, 44, 44)
-        button.setImage(UIImage(named: "navi_back_btn")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        button.tintColor = UIColor.whiteColor()
-        button.addTarget(self, action: "leftButtonAction", forControlEvents: .TouchUpInside)
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 10, y: 20, width: 44, height: 44)
+        button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        button.tintColor = UIColor.white
+        button.addTarget(self, action: #selector(Demo3Controller.leftButtonAction), for: .touchUpInside)
         view.addSubview(button)
     }
 
     func setupHeaderView() {
         
         let options = StretchHeaderOptions()
-        options.position = .FullScreenTop
+        options.position = .fullScreenTop
         
         header = StretchHeader()
-        header.stretchHeaderSize(headerSize: CGSizeMake(view.frame.size.width, 160),
-            imageSize: CGSizeMake(view.frame.size.width, 120),
+        header.stretchHeaderSize(headerSize: CGSize(width: view.frame.size.width, height: 160),
+            imageSize: CGSize(width: view.frame.size.width, height: 120),
             controller: self,
             options: options)
         header.imageView.image = UIImage(named: "photo_sample_05")
         
         // custom
         let avatarImage = UIImageView()
-        avatarImage.frame = CGRectMake(10, header.imageView.frame.height - 20, 60, 60)
+        avatarImage.frame = CGRect(x: 10, y: header.imageView.frame.height - 20, width: 60, height: 60)
         avatarImage.image = UIImage(named: "photo_sample_03")
         avatarImage.layer.cornerRadius = 5.0
-        avatarImage.layer.borderColor = UIColor.whiteColor().CGColor
+        avatarImage.layer.borderColor = UIColor.white.cgColor
         avatarImage.layer.borderWidth = 3.0
         avatarImage.clipsToBounds = true
-        avatarImage.contentMode = .ScaleAspectFill
+        avatarImage.contentMode = .scaleAspectFill
         header.addSubview(avatarImage)
         
-        let button = UIButton(type: .RoundedRect)
-        button.frame = CGRectMake(header.imageView.frame.width - 100 - 10, header.imageView.frame.height + 10, 100, 30)
-        button.setTitle("Edit Profile", forState: .Normal)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        let button = UIButton(type: .roundedRect)
+        button.frame = CGRect(x: header.imageView.frame.width - 100 - 10, y: header.imageView.frame.height + 10, width: 100, height: 30)
+        button.setTitle("Edit Profile", for: UIControlState())
+        button.setTitleColor(UIColor.lightGray, for: UIControlState())
         button.layer.cornerRadius = 5.0
-        button.layer.borderColor = UIColor.lightGrayColor().CGColor
+        button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1.0
         header.addSubview(button)
         
@@ -90,11 +90,11 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     // MARK: - Selector
     func leftButtonAction() {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - ScrollView Delegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         header.updateScrollViewOffset(scrollView)
         
         // NavigationHeader alpha update
@@ -109,19 +109,19 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 20
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TableViewCell", forIndexPath: indexPath)
-        cell.textLabel?.text = "index -- \(indexPath.row)"
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
+        cell.textLabel?.text = "index -- \((indexPath as NSIndexPath).row)"
         return cell
     }
 }

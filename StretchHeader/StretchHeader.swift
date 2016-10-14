@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class StretchHeader: UIView {
+open class StretchHeader: UIView {
     
-    public var imageView : UIImageView!
-    private var contentSize = CGSizeZero
-    private var topInset : CGFloat = 0
-    private var options: StretchHeaderOptions!
+    open var imageView : UIImageView!
+    fileprivate var contentSize = CGSize.zero
+    fileprivate var topInset : CGFloat = 0
+    fileprivate var options: StretchHeaderOptions!
     
     convenience init() {
-        self.init(frame: CGRectZero)
+        self.init(frame: CGRect.zero)
     }
     
     override init(frame: CGRect) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         commonInit()
     }
     
@@ -29,50 +29,50 @@ public class StretchHeader: UIView {
     }
     
     // MARK: Private
-    private func commonInit() {
+    fileprivate func commonInit() {
         imageView = UIImageView()
-        imageView.backgroundColor = UIColor.orangeColor()
+        imageView.backgroundColor = UIColor.orange
         imageView.clipsToBounds = true
-        imageView.contentMode = .ScaleAspectFill
-        imageView.userInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         addSubview(imageView)
     }
     
     // MARK: Public
-    public func stretchHeaderSize(headerSize headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions) {
+    open func stretchHeaderSize(headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions) {
         
-        let status_height = UIApplication.sharedApplication().statusBarFrame.height
+        let status_height = UIApplication.shared.statusBarFrame.height
         let navi_height = controller.navigationController?.navigationBar.frame.size.height ?? 44
         
         self.options = options
         
-        if options.position == StretchHeaderOptions.HeaderPosition.FullScreenTop {
+        if options.position == StretchHeaderOptions.HeaderPosition.fullScreenTop {
             controller.automaticallyAdjustsScrollViewInsets = false
         }
         
-        if options.position == StretchHeaderOptions.HeaderPosition.UnderNavigationBar {
-            if let translucent = controller.navigationController?.navigationBar.translucent {
+        if options.position == StretchHeaderOptions.HeaderPosition.underNavigationBar {
+            if let translucent = controller.navigationController?.navigationBar.isTranslucent {
                 if translucent {
                     topInset += status_height + navi_height
                 }
             }
         }
         
-        imageView.frame = CGRectMake(0, 0, imageSize.width, imageSize.height)
+        imageView.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
         contentSize = imageSize
-        self.frame = CGRectMake(0, 0, headerSize.width, headerSize.height)
+        self.frame = CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height)
     }
     
-    public func updateScrollViewOffset(scrollView: UIScrollView) {
+    open func updateScrollViewOffset(_ scrollView: UIScrollView) {
         
         if imageView == nil { return }
         var scrollOffset : CGFloat = scrollView.contentOffset.y
         scrollOffset += topInset
         
         if scrollOffset < 0 {
-            imageView.frame = CGRectMake(scrollOffset ,scrollOffset, contentSize.width - (scrollOffset * 2) , contentSize.height - scrollOffset);
+            imageView.frame = CGRect(x: scrollOffset ,y: scrollOffset, width: contentSize.width - (scrollOffset * 2) , height: contentSize.height - scrollOffset);
         } else {
-            imageView.frame = CGRectMake(0, 0, contentSize.width, contentSize.height);
+            imageView.frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height);
         }
     }
 }

@@ -17,7 +17,7 @@ class ViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -25,41 +25,41 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         datas = ["Demo1 -- FullScreen","Demo2 -- NavigationBar","Demo3 -- Custom"]
     }
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datas.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TableViewCell", forIndexPath: indexPath)
-        cell.textLabel?.text = datas[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
+        cell.textLabel?.text = datas[(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      
-        tableView.deselectRowAtIndexPath(tableView.indexPathForSelectedRow!, animated: true)
+        tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
         
-        if indexPath.row == 0 { // DEMO 1
+        if (indexPath as NSIndexPath).row == 0 { // DEMO 1
             let vc = Demo1Controller()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
-        if indexPath.row == 1 { // DEMO 2
+        if (indexPath as NSIndexPath).row == 1 { // DEMO 2
             let vc = Demo2Controller()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
-        if indexPath.row == 2 { // DEMO 3
+        if (indexPath as NSIndexPath).row == 2 { // DEMO 3
             let vc = Demo3Controller()
             self.navigationController?.pushViewController(vc, animated: true)
         }
