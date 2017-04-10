@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StretchView" customModule="StretchHeaderDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRb-r8-eib">
+                    <rect key="frame" x="10" y="100" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="5nG-yQ-SzF"/>
+                        <constraint firstAttribute="width" constant="60" id="EEh-uZ-luM"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXV-JP-bAO">
+                    <rect key="frame" x="312" y="126" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jRb-r8-eib" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="3aO-cU-iKB"/>
+                <constraint firstAttribute="bottom" secondItem="jRb-r8-eib" secondAttribute="bottom" id="3w5-kZ-773"/>
+                <constraint firstAttribute="trailing" secondItem="bXV-JP-bAO" secondAttribute="trailing" constant="16" id="hSR-2j-wV1"/>
+                <constraint firstAttribute="bottom" secondItem="bXV-JP-bAO" secondAttribute="bottom" constant="4" id="viG-CJ-5lW"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="avatarImage" destination="jRb-r8-eib" id="v6K-eH-iAA"/>
+                <outlet property="button" destination="bXV-JP-bAO" id="Ug0-dz-y8P"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-137.5"/>
+        </view>
+    </objects>
+</document>
