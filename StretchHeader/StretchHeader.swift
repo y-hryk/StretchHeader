@@ -8,14 +8,17 @@
 
 import UIKit
 
+// MARK: - UIScrollView Extension
+
 open class StretchHeader: UIView {
     
     open var imageView : UIImageView!
     var navigationView: UIView?
-    fileprivate var scrollView: UIScrollView?
+    fileprivate weak var scrollView: UIScrollView?
     fileprivate var contentSize = CGSize.zero
     fileprivate var topInset : CGFloat = 0
     fileprivate var options: StretchHeaderOptions!
+    fileprivate var isObservingScrollView: Bool = false
     
     convenience init() {
         self.init(frame: CGRect.zero)
@@ -31,9 +34,64 @@ open class StretchHeader: UIView {
         commonInit()
     }
     
-    open override func removeFromSuperview() {
-        self.scrollView?.removeObserver(self, forKeyPath: "contentOffset")
-        super.removeFromSuperview()
+    open override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        
+        guard options.scrollUpdateMethod == .notification else {
+            return
+        }
+        
+        if newWindow != nil {
+            self.observeScrollViewIfPossible()
+        } else {
+            self.stopObservingScrollView()
+        }
+        
+    }
+    
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        guard options.scrollUpdateMethod == .notification else {
+            return
+        }
+        
+        if (self.superview != self.scrollView) {
+            self.stopObservingScrollView()
+            self.scrollView = nil
+        }
+        
+        if !(self.superview is UIScrollView) {
+            return
+        }
+        
+        self.scrollView = self.superview as? UIScrollView
+        
+        self.observeScrollViewIfPossible()
+        
+    }
+    
+    fileprivate func stopObservingScrollView() {
+        
+        guard let scrollView = self.scrollView, self.isObservingScrollView else {
+            return
+        }
+        
+        scrollView.removeObserver(self, forKeyPath: "contentOffset")
+        
+        self.isObservingScrollView = false
+        
+    }
+    
+    fileprivate func observeScrollViewIfPossible() {
+        
+        guard let scrollView = self.scrollView, !self.isObservingScrollView else {
+            return
+        }
+        
+        scrollView.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
+        self.isObservingScrollView = true
+        
     }
     
     // MARK: Private
@@ -47,29 +105,10 @@ open class StretchHeader: UIView {
         sendSubview(toBack: imageView)
     }
     
-    fileprivate func setup(scrollView: UIScrollView?) {
-        self.scrollView = scrollView
-        scrollView?.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
-    }
-    
-    fileprivate func updateStretch(withScrollViewOffset offset: CGPoint) {
-        
-        if imageView == nil { return }
-        var scrollOffset : CGFloat = offset.y
-        scrollOffset += topInset
-        
-        if scrollOffset < 0 {
-            imageView.frame = CGRect(x: scrollOffset ,y: scrollOffset, width: contentSize.width - (scrollOffset * 2) , height: contentSize.height - scrollOffset);
-        } else {
-            imageView.frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height);
-        }
-        
-    }
-    
     // MARK: Public
     
     /// Use with XIB init
-    open func setup(options: StretchHeaderOptions, withController controller: UIViewController, andScrollView scrollView: UIScrollView? = nil, navigationView: UIView? = nil) {
+    open func setup(options: StretchHeaderOptions, withController controller: UIViewController, navigationView: UIView? = nil) {
         
         let status_height = UIApplication.shared.statusBarFrame.height
         let navi_height = controller.navigationController?.navigationBar.frame.size.height ?? 44
@@ -88,10 +127,6 @@ open class StretchHeader: UIView {
             }
         }
         
-        if options.scrollUpdateMethod == .notification {
-            setup(scrollView: scrollView)
-        }
-        
         self.navigationView = navigationView
         
     }
@@ -108,13 +143,27 @@ open class StretchHeader: UIView {
     /// Full setup. Use without XIB init
     open func stretchHeaderSize(headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions, andScrollView scrollView: UIScrollView? = nil, navigationView: UIView? = nil) {
         
-        setup(options: options, withController: controller, andScrollView: scrollView, navigationView: navigationView)
+        setup(options: options, withController: controller, navigationView: navigationView)
         setup(headerSize: headerSize, imageSize: imageSize)
-
+        
     }
     
     open func updateScrollViewOffset(_ scrollView: UIScrollView) {
         updateStretch(withScrollViewOffset: scrollView.contentOffset)
+    }
+    
+    open func updateStretch(withScrollViewOffset offset: CGPoint) {
+        
+        if imageView == nil { return }
+        var scrollOffset : CGFloat = offset.y
+        scrollOffset += topInset
+        
+        if scrollOffset < 0 {
+            imageView.frame = CGRect(x: scrollOffset ,y: scrollOffset, width: contentSize.width - (scrollOffset * 2) , height: contentSize.height - scrollOffset);
+        } else {
+            imageView.frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height);
+        }
+        
     }
     
     /// Can be overriden for custom animation
@@ -140,16 +189,16 @@ open class StretchHeader: UIView {
     
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        guard keyPath == "contentOffset", let offset = scrollView?.contentOffset else {
-            return
+        if keyPath == "contentOffset", let offset = scrollView?.contentOffset {
+            
+            updateStretch(withScrollViewOffset: offset)
+            
+            if self.options.isNavigationViewAnimated {
+                updateNavigationView()
+            }
+            
         }
         
-        updateStretch(withScrollViewOffset: offset)
-        
-        if self.options.isNavigationViewAnimated {
-            updateNavigationView()
-        }
-
     }
     
 }

@@ -21,7 +21,7 @@ class Demo4Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil;
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ class Demo4Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         button.frame = CGRect(x: 10, y: 20, width: 44, height: 44)
         button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControlState())
         button.tintColor = UIColor.white
-        button.addTarget(self, action: #selector(Demo3Controller.leftButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
         view.addSubview(button)
     }
     

@@ -24,23 +24,52 @@ class Demo5Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         
+        // NavigationHeader
+        let navibarHeight : CGFloat = navigationController!.navigationBar.bounds.height
+        let statusbarHeight : CGFloat = UIApplication.shared.statusBarFrame.size.height
+        navigationView = UIView()
+        navigationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: navibarHeight + statusbarHeight)
+        navigationView.backgroundColor = UIColor(red: 121/255.0, green: 193/255.0, blue: 203/255.0, alpha: 1.0)
+        navigationView.alpha = 0.0
+        view.addSubview(navigationView)
+        
         // back button
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 10, y: 20, width: 44, height: 44)
         button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControlState())
         button.tintColor = UIColor.white
-        button.addTarget(self, action: #selector(Demo3Controller.leftButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(leftButtonAction), for: .touchUpInside)
         view.addSubview(button)
         
-        // back button on navigation bar
-        let backBtn = UIBarButtonItem()
-        let image: UIImage? = UIImage(named: "navi_back_btn")
-        backBtn.image = image
-        backBtn.action = #selector(Demo3Controller.leftButtonAction)
-        backBtn.target = self
-        navigationItem.leftBarButtonItem = backBtn
-        
         setupHeaderView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        if let header = self.header {
+//            self.tableView.addObserver(header, forKeyPath: "contentOffset", options: .new, context: nil)
+//        }
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+//        if let header = self.header {
+//            self.tableView.removeObserver(header, forKeyPath: "contentOffset")
+//        }
+        
+////
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        
         
     }
     
@@ -53,7 +82,7 @@ class Demo5Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         header = Bundle.main.loadNibNamed("StretchView", owner: nil, options: nil)?.first as? StretchView
         
-        header.setup(options: options, withController: self, andScrollView: tableView, navigationView: navigationController?.navigationBar)
+        header.setup(options: options, withController: self, navigationView: self.navigationView)
         header.imageView.image = UIImage(named: "photo_sample_05")
         
         tableView.tableHeaderView = header
