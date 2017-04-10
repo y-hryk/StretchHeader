@@ -26,7 +26,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-        datas = ["Demo1 -- FullScreen","Demo2 -- NavigationBar","Demo3 -- Custom", "Demo4 -- Xib support"]
+        datas = ["Demo1 -- FullScreen","Demo2 -- NavigationBar","Demo3 -- Custom", "Demo4 -- Xib support", "Demo5 -- Notification method"]
     }
 
     // MARK: - Table view data source
@@ -49,26 +49,35 @@ class ViewController: UITableViewController {
      
         tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
         
-        if (indexPath as NSIndexPath).row == 0 { // DEMO 1
-            let vc = Demo1Controller()
-            self.navigationController?.pushViewController(vc, animated: true)
+        var vc: UIViewController?
+        
+        switch indexPath.row {
+            
+        case 0:
+            vc = Demo1Controller()
+            
+        case 1:
+            vc = Demo2Controller()
+            
+        case 2:
+            vc = Demo3Controller()
+            
+        case 3:
+            vc = Demo4Controller()
+            
+        case 4:
+            vc = Demo5Controller()
+
+        default:
+            break
+            
         }
         
-        if (indexPath as NSIndexPath).row == 1 { // DEMO 2
-            let vc = Demo2Controller()
-            self.navigationController?.pushViewController(vc, animated: true)
+        guard let viewController = vc else {
+            return
         }
         
-        if (indexPath as NSIndexPath).row == 2 { // DEMO 3
-            let vc = Demo3Controller()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-        if indexPath.row == 3 {  // DEMO 4
-            let vc = Demo4Controller()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        self.navigationController?.pushViewController(viewController, animated: true)
         
      }
 }
-

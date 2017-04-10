@@ -10,6 +10,7 @@
 		645097781E9BB3C100518D1D /* Demo4Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645097771E9BB3C100518D1D /* Demo4Controller.swift */; };
 		6450977B1E9BB46800518D1D /* StretchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6450977A1E9BB46800518D1D /* StretchView.xib */; };
 		6450977D1E9BB5C000518D1D /* StretchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450977C1E9BB5C000518D1D /* StretchView.swift */; };
+		645097801E9BBAF100518D1D /* Demo5Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450977F1E9BBAF100518D1D /* Demo5Controller.swift */; };
 		D03522D21CA7B02400801E07 /* Demo1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03522D11CA7B02400801E07 /* Demo1Controller.swift */; };
 		D03522D41CA7B05700801E07 /* Demo2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03522D31CA7B05700801E07 /* Demo2Controller.swift */; };
 		D03522D61CA8DEAA00801E07 /* Demo3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03522D51CA8DEAA00801E07 /* Demo3Controller.swift */; };
@@ -33,6 +34,7 @@
 		645097771E9BB3C100518D1D /* Demo4Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo4Controller.swift; sourceTree = "<group>"; };
 		6450977A1E9BB46800518D1D /* StretchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StretchView.xib; sourceTree = "<group>"; };
 		6450977C1E9BB5C000518D1D /* StretchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchView.swift; sourceTree = "<group>"; };
+		6450977F1E9BBAF100518D1D /* Demo5Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo5Controller.swift; sourceTree = "<group>"; };
 		D03522D11CA7B02400801E07 /* Demo1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo1Controller.swift; sourceTree = "<group>"; };
 		D03522D31CA7B05700801E07 /* Demo2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo2Controller.swift; sourceTree = "<group>"; };
 		D03522D51CA8DEAA00801E07 /* Demo3Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo3Controller.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 				6450977C1E9BB5C000518D1D /* StretchView.swift */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		6450977E1E9BBAD400518D1D /* Demo5 */ = {
+			isa = PBXGroup;
+			children = (
+				6450977F1E9BBAF100518D1D /* Demo5Controller.swift */,
+			);
+			name = Demo5;
 			sourceTree = "<group>";
 		};
 		D03522CD1CA7AF9E00801E07 /* Demo1 */ = {
@@ -154,6 +164,7 @@
 				D03522CE1CA7AFA700801E07 /* Demo2 */,
 				D03522CF1CA7AFC400801E07 /* Demo3 */,
 				645097761E9BB38D00518D1D /* Demo4 */,
+				6450977E1E9BBAD400518D1D /* Demo5 */,
 			);
 			name = DemoControllers;
 			sourceTree = "<group>";
@@ -259,6 +270,7 @@
 				D03522D61CA8DEAA00801E07 /* Demo3Controller.swift in Sources */,
 				D03890071CA3DB0400BD3CBC /* StretchHeader.swift in Sources */,
 				D03890091CA3DB3D00BD3CBC /* StretchHeaderOptions.swift in Sources */,
+				645097801E9BBAF100518D1D /* Demo5Controller.swift in Sources */,
 				645097781E9BB3C100518D1D /* Demo4Controller.swift in Sources */,
 				D03522D41CA7B05700801E07 /* Demo2Controller.swift in Sources */,
 				D0388FF21CA3D8B900BD3CBC /* AppDelegate.swift in Sources */,

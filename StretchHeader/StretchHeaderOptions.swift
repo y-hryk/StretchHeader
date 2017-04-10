@@ -13,6 +13,9 @@ open class StretchHeaderOptions {
     open var position : HeaderPosition = .fullScreenTop
     open var scrollUpdateMethod: ScrollUpdater = .delegate
     
+    /// Work's only with notification update method
+    open var isNavigationViewAnimated: Bool = true
+    
     public enum HeaderPosition {
         case fullScreenTop
         case underNavigationBar
