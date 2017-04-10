@@ -26,7 +26,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-        datas = ["Demo1 -- FullScreen","Demo2 -- NavigationBar","Demo3 -- Custom"]
+        datas = ["Demo1 -- FullScreen","Demo2 -- NavigationBar","Demo3 -- Custom", "Demo4 -- Xib support"]
     }
 
     // MARK: - Table view data source
@@ -63,6 +63,12 @@ class ViewController: UITableViewController {
             let vc = Demo3Controller()
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+        if indexPath.row == 3 {  // DEMO 4
+            let vc = Demo4Controller()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
      }
 }
 

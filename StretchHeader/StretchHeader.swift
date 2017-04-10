@@ -41,7 +41,9 @@ open class StretchHeader: UIView {
     }
     
     // MARK: Public
-    open func stretchHeaderSize(headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions) {
+    
+    /// Use with XIB init
+    open func setup(options: StretchHeaderOptions, withController controller: UIViewController) {
         
         let status_height = UIApplication.shared.statusBarFrame.height
         let navi_height = controller.navigationController?.navigationBar.frame.size.height ?? 44
@@ -60,9 +62,23 @@ open class StretchHeader: UIView {
             }
         }
         
+    }
+    
+    /// Size setup
+    open func setup(headerSize: CGSize, imageSize: CGSize) {
+        
         imageView.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
         contentSize = imageSize
         self.frame = CGRect(x: 0, y: 0, width: headerSize.width, height: headerSize.height)
+        
+    }
+    
+    /// Full setup. Use without XIB init
+    open func stretchHeaderSize(headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions) {
+        
+        self.setup(options: options, withController: controller)
+        self.setup(headerSize: headerSize, imageSize: imageSize)
+
     }
     
     open func updateScrollViewOffset(_ scrollView: UIScrollView) {

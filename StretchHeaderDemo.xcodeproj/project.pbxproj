@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		645097781E9BB3C100518D1D /* Demo4Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645097771E9BB3C100518D1D /* Demo4Controller.swift */; };
+		6450977B1E9BB46800518D1D /* StretchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6450977A1E9BB46800518D1D /* StretchView.xib */; };
+		6450977D1E9BB5C000518D1D /* StretchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6450977C1E9BB5C000518D1D /* StretchView.swift */; };
 		D03522D21CA7B02400801E07 /* Demo1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03522D11CA7B02400801E07 /* Demo1Controller.swift */; };
 		D03522D41CA7B05700801E07 /* Demo2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03522D31CA7B05700801E07 /* Demo2Controller.swift */; };
 		D03522D61CA8DEAA00801E07 /* Demo3Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03522D51CA8DEAA00801E07 /* Demo3Controller.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		645097771E9BB3C100518D1D /* Demo4Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo4Controller.swift; sourceTree = "<group>"; };
+		6450977A1E9BB46800518D1D /* StretchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StretchView.xib; sourceTree = "<group>"; };
+		6450977C1E9BB5C000518D1D /* StretchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchView.swift; sourceTree = "<group>"; };
 		D03522D11CA7B02400801E07 /* Demo1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo1Controller.swift; sourceTree = "<group>"; };
 		D03522D31CA7B05700801E07 /* Demo2Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo2Controller.swift; sourceTree = "<group>"; };
 		D03522D51CA8DEAA00801E07 /* Demo3Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demo3Controller.swift; sourceTree = "<group>"; };
@@ -59,6 +65,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		645097761E9BB38D00518D1D /* Demo4 */ = {
+			isa = PBXGroup;
+			children = (
+				645097791E9BB45800518D1D /* view */,
+				645097771E9BB3C100518D1D /* Demo4Controller.swift */,
+			);
+			name = Demo4;
+			sourceTree = "<group>";
+		};
+		645097791E9BB45800518D1D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6450977A1E9BB46800518D1D /* StretchView.xib */,
+				6450977C1E9BB5C000518D1D /* StretchView.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		D03522CD1CA7AF9E00801E07 /* Demo1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +153,7 @@
 				D03522CD1CA7AF9E00801E07 /* Demo1 */,
 				D03522CE1CA7AFA700801E07 /* Demo2 */,
 				D03522CF1CA7AFC400801E07 /* Demo3 */,
+				645097761E9BB38D00518D1D /* Demo4 */,
 			);
 			name = DemoControllers;
 			sourceTree = "<group>";
@@ -216,6 +241,7 @@
 				D038901F1CA3DF3600BD3CBC /* navi_back_btn@2x.png in Resources */,
 				D038901C1CA3DEA500BD3CBC /* photo_sample_06.png in Resources */,
 				D038901B1CA3DEA500BD3CBC /* photo_sample_05.png in Resources */,
+				6450977B1E9BB46800518D1D /* StretchView.xib in Resources */,
 				D038901D1CA3DEA500BD3CBC /* photo_sample_07.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,11 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6450977D1E9BB5C000518D1D /* StretchView.swift in Sources */,
 				D0388FF41CA3D8B900BD3CBC /* ViewController.swift in Sources */,
 				D03522D21CA7B02400801E07 /* Demo1Controller.swift in Sources */,
 				D03522D61CA8DEAA00801E07 /* Demo3Controller.swift in Sources */,
 				D03890071CA3DB0400BD3CBC /* StretchHeader.swift in Sources */,
 				D03890091CA3DB3D00BD3CBC /* StretchHeaderOptions.swift in Sources */,
+				645097781E9BB3C100518D1D /* Demo4Controller.swift in Sources */,
 				D03522D41CA7B05700801E07 /* Demo2Controller.swift in Sources */,
 				D0388FF21CA3D8B900BD3CBC /* AppDelegate.swift in Sources */,
 			);
