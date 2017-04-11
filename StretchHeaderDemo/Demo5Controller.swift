@@ -47,30 +47,9 @@ class Demo5Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        if let header = self.header {
-//            self.tableView.addObserver(header, forKeyPath: "contentOffset", options: .new, context: nil)
-//        }
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-//        if let header = self.header {
-//            self.tableView.removeObserver(header, forKeyPath: "contentOffset")
-//        }
-        
-////
-//        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        
-        
     }
     
     func setupHeaderView() {
