@@ -97,7 +97,7 @@ open class StretchHeader: UIView {
     // MARK: Private
     fileprivate func commonInit() {
         imageView = UIImageView()
-        imageView.backgroundColor = UIColor.orange
+        imageView.backgroundColor = UIColor.clear
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
@@ -141,7 +141,7 @@ open class StretchHeader: UIView {
     }
     
     /// Full setup. Use without XIB init
-    open func stretchHeaderSize(headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions, andScrollView scrollView: UIScrollView? = nil, navigationView: UIView? = nil) {
+    open func stretchHeaderSize(headerSize: CGSize, imageSize: CGSize, controller: UIViewController, options: StretchHeaderOptions, navigationView: UIView? = nil) {
         
         setup(options: options, withController: controller, navigationView: navigationView)
         setup(headerSize: headerSize, imageSize: imageSize)
