@@ -167,9 +167,9 @@ open class StretchHeader: UIView {
     }
     
     /// Can be overriden for custom animation
-    open func updateNavigationView() {
+    open func updateNavigationView(withScrollViewOffset offset: CGPoint) {
         
-        guard let navigationView = self.navigationView, let offset = scrollView?.contentOffset else {
+        guard let navigationView = self.navigationView else {
             return
         }
         
@@ -194,7 +194,7 @@ open class StretchHeader: UIView {
             updateStretch(withScrollViewOffset: offset)
             
             if self.options.isNavigationViewAnimated {
-                updateNavigationView()
+                updateNavigationView(withScrollViewOffset: offset)
             }
             
         }
