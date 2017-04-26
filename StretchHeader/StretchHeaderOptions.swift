@@ -23,6 +23,8 @@ open class StretchHeaderOptions {
     
     public enum ScrollUpdater {
         case delegate
+        // FIXME: - very unstable
+        /// very unstable
         case notification
     }
     
