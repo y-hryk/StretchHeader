@@ -89,7 +89,7 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
     }
     
     // MARK: - Selector
-    func leftButtonAction() {
+    @objc func leftButtonAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
