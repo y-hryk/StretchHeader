@@ -102,7 +102,7 @@ open class StretchHeader: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         addSubview(imageView)
-        sendSubview(toBack: imageView)
+        sendSubviewToBack(imageView)
     }
     
     // MARK: Public

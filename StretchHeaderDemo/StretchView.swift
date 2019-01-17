@@ -23,8 +23,8 @@ class StretchView: StretchHeader {
         avatarImage.clipsToBounds = true
         avatarImage.contentMode = .scaleAspectFill
         
-        button.setTitle("Edit Profile", for: UIControlState())
-        button.setTitleColor(UIColor.lightGray, for: UIControlState())
+        button.setTitle("Edit Profile", for: UIControl.State())
+        button.setTitleColor(UIColor.lightGray, for: UIControl.State())
         button.layer.cornerRadius = 5.0
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1.0

@@ -47,7 +47,7 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         // back button
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 10, y: 20, width: 44, height: 44)
-        button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControl.State())
         button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(Demo3Controller.leftButtonAction), for: .touchUpInside)
         view.addSubview(button)
@@ -78,8 +78,8 @@ class Demo3Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         let button = UIButton(type: .roundedRect)
         button.frame = CGRect(x: header.imageView.frame.width - 100 - 10, y: header.imageView.frame.height + 10, width: 100, height: 30)
-        button.setTitle("Edit Profile", for: UIControlState())
-        button.setTitleColor(UIColor.lightGray, for: UIControlState())
+        button.setTitle("Edit Profile", for: UIControl.State())
+        button.setTitleColor(UIColor.lightGray, for: UIControl.State())
         button.layer.cornerRadius = 5.0
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1.0

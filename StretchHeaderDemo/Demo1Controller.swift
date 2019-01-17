@@ -46,7 +46,7 @@ class Demo1Controller: UIViewController, UITableViewDataSource, UITableViewDeleg
         
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: 10, y: 20, width: 44, height: 44)
-        button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControlState())
+        button.setImage(UIImage(named: "navi_back_btn")?.withRenderingMode(.alwaysTemplate), for: UIControl.State())
         button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(Demo1Controller.leftButtonAction), for: .touchUpInside)
         view.addSubview(button)
